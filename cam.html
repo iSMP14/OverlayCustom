@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Overlay</title>
+  <style>
+    .overlay {
+        --border-style: 5px solid rgb(212, 0, 255);
+        --border-space: 20px;
+
+        position: absolute;
+        width: 720px;
+        height: 480px;
+    }
+
+    .overlay-helper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .overlay-element {
+        padding: 20px;
+        width: 150px;
+        height: 100px;
+        position: absolute;
+    }
+
+    .overlay-text {
+        font-size: 1.75em;
+        color: white;
+        font-family: monospace;
+    }
+
+    .overlay .top-left {
+        border-left: var(--border-style);
+        border-top: var(--border-style);
+        top: var(--border-space);
+        left: var(--border-space);
+        text-align: left;
+    }
+
+    .overlay .top-right {
+        border-right: var(--border-style);
+        border-top: var(--border-style);
+        top: var(--border-space);
+        right: var(--border-space);
+        text-align: right;
+    }
+
+    .overlay .bottom-left {
+        border-left: var(--border-style);
+        border-bottom: var(--border-style);
+        bottom: var(--border-space);
+        left: var(--border-space);
+        text-align: left;
+    }
+
+    .overlay .bottom-right {
+        border-right: var(--border-style);
+        border-bottom: var(--border-style);
+        bottom: var(--border-space);
+        right: var(--border-space);
+        text-align: right;
+    }
+
+    #overlay-bottom-left-text {
+        position: absolute;
+        bottom: var(--border-space);
+        left: var(--border-space);
+    }
+
+    #overlay-bottom-right-text {
+        position: absolute;
+        bottom: var(--border-space);
+        right: var(--border-space);
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <div class="overlay">
+      <div class="overlay-helper">
+        <div class="overlay-element top-left">
+          <span id="overlay-top-left-text" class="overlay-text">
+            🔴 REC
+          </span>
+        </div>
+        <div class="overlay-element top-right">
+          <span id="overlay-top-right-text" class="overlay-text">
+            00:00
+          </span>
+        </div>
+        <div class="overlay-element bottom-left">
+          <span id="overlay-bottom-left-text" class="overlay-text">
+            25 FPS
+          </span>
+        </div>
+        <div class="overlay-element bottom-right">
+          <span id="overlay-bottom-right-text" class="overlay-text">
+            1280x720
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
