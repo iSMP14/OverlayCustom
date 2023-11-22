@@ -3,106 +3,79 @@
   <meta charset="utf-8">
   <title>Overlay</title>
   <style>
-    .overlay {
-        --border-style: 5px solid rgb(212, 0, 255);
-        --border-space: 20px;
+    
 
-        position: absolute;
-        width: 720px;
-        height: 480px;
-    }
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: #1D1F20;
+}
+#box {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  width: 600px;
+  height: 400px;
+  color: white;
+  font-family: 'Raleway';
+  font-size: 2.5rem;
+}
+.gradient-border {
+  --borderWidth: 10px;
+  background: #1D1F20;
+  position: relative;
+  border-radius: var(--borderWidth);
+}
+.gradient-border:after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+}
 
-    .overlay-helper {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
 
-    .overlay-element {
-        padding: 20px;
-        width: 150px;
-        height: 100px;
-        position: absolute;
-    }
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 
-    .overlay-text {
-        font-size: 1.75em;
-        color: white;
-        font-family: monospace;
-    }
+.p_cam {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+  font-family: sans-serif;
+  
+}
 
-    .overlay .top-left {
-        border-left: var(--border-style);
-        border-top: var(--border-style);
-        top: var(--border-space);
-        left: var(--border-space);
-        text-align: left;
-    }
-
-    .overlay .top-right {
-        border-right: var(--border-style);
-        border-top: var(--border-style);
-        top: var(--border-space);
-        right: var(--border-space);
-        text-align: right;
-    }
-
-    .overlay .bottom-left {
-        border-left: var(--border-style);
-        border-bottom: var(--border-style);
-        bottom: var(--border-space);
-        left: var(--border-space);
-        text-align: left;
-    }
-
-    .overlay .bottom-right {
-        border-right: var(--border-style);
-        border-bottom: var(--border-style);
-        bottom: var(--border-space);
-        right: var(--border-space);
-        text-align: right;
-    }
-
-    #overlay-bottom-left-text {
-        position: absolute;
-        bottom: var(--border-space);
-        left: var(--border-space);
-    }
-
-    #overlay-bottom-right-text {
-        position: absolute;
-        bottom: var(--border-space);
-        right: var(--border-space);
-    }
   </style>
 </head>
 <body>
-  <div id="content">
-    <div class="overlay">
-      <div class="overlay-helper">
-        <div class="overlay-element top-left">
-          <span id="overlay-top-left-text" class="overlay-text">
-            🔴 REC
-          </span>
-        </div>
-        <div class="overlay-element top-right">
-          <span id="overlay-top-right-text" class="overlay-text">
-            00:00
-          </span>
-        </div>
-        <div class="overlay-element bottom-left">
-          <span id="overlay-bottom-left-text" class="overlay-text">
-            25 FPS
-          </span>
-        </div>
-        <div class="overlay-element bottom-right">
-          <span id="overlay-bottom-right-text" class="overlay-text">
-            1280x720
-          </span>
-        </div>
-      </div>
-    </div>
-
+  <div class="gradient-border" id="box">
+    <p class="p_cam"> &lt; &#8725; iSempiDev  &gt; </p>
   </div>
 </body>
 </html>
