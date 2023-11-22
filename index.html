@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  <title>Overlay</title>
+  <title>Overlay Cam iSMP</title>
   <style>
     
 
@@ -26,7 +26,7 @@ body {
   font-size: 2.5rem;
 }
 .gradient-border {
-  --borderWidth: 10px;
+  --borderWidth: 15px;
   background: #1D1F20;
   position: relative;
   border-radius: var(--borderWidth);
@@ -47,27 +47,39 @@ body {
 
 
 @keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+
+  25% {
+    background-position: 50% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  75% {
+    background-position: 50% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .p_cam {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   text-transform: uppercase;
   background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: animatedgradient 3s ease alternate infinite;
   background-size: 300% 300%;
   font-family: sans-serif;
+  margin: 1rem;
   
 }
 
