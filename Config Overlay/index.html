@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
+      rel="stylesheet" />
+    <link href="./styles.css" rel="stylesheet" />
+    <link href="./src/skinstyle.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <h1 class="h1_overlay">Config Overlay</h1>
+        <p class="input_title">Enter the Streamer Name :</p>
+        <div class="config_1">
+          <input
+            id="nameStreamer"
+            class="nameStreamer"
+            type="text"
+            name="nameStreamer"
+            placeholder="Streamer Name" />
+        </div>
+        <p class="input_title">Enter the Cam Text :</p>
+        <div class="config_2">
+          <input
+            class="camOverlayText"
+            id="camOverlayText"
+            type="text"
+            name="camOverlayText"
+            placeholder="Cam Overlay Text" />
+        </div>
+        <p class="input_title">This is your Obs URL :</p>
+        <div class="config_3" id="overlayUrl">
+          <input
+            class="overlayUrl"
+            type="text"
+            name="overlayUrl"
+            placeholder="Overlay Url" />
+        </div>
+        <button class="button" id="button">Generate</button>
+      </div>
+
+      <!-- Cam Overlay -->
+      <div class="cam_overlayContainer" id="camContainer">
+        <div class="gradient-border" id="box">
+          <p class="p_cam" id="cam_text">&lt; &#8725; iSempiDev &gt;</p>
+          <!-- Streamer Name -->
+        </div>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

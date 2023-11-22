@@ -1,0 +1,106 @@
+body {
+  background-color: rgb(54, 49, 49);
+}
+
+:root {
+  --ubuntu-font: "Ubuntu", sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.box {
+  background-color: rgb(196, 182, 182);
+  border: 3px solid greenyellow;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5rem;
+  color: white;
+  width: 25rem;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .h1_overlay {
+    font-size: 2rem;
+    font-family: var(--ubuntu-font);
+    font-weight: bold;
+    font-style: italic;
+    padding: 5px;
+    margin: auto;
+    margin-bottom: 0.1rem;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    width: auto;
+  }
+
+  .config_1,
+  .config_2,
+  .config_3 {
+    background-color: rgb(236, 166, 166);
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 0.1rem;
+    color: white;
+    width: 15rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .input_title {
+    font-size: medium;
+    font-family: var(--ubuntu-font);
+    font-weight: bold;
+    padding: 5px;
+    margin: auto;
+    margin-bottom: 0.1rem;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    width: auto;
+  }
+
+  .nameStreamer {
+    font-size: large;
+    font-family: var(--ubuntu-font);
+    background-color: silver;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: auto;
+    color: black;
+    text-align: center;
+  }
+
+  .camOverlayText {
+    font-size: large;
+    font-family: var(--ubuntu-font);
+    background-color: silver;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: auto;
+    color: black;
+    text-align: center;
+  }
+
+  .overlayUrl {
+    font-size: large;
+    font-family: var(--ubuntu-font);
+    background-color: silver;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: auto;
+    color: black;
+    text-align: center;
+  }
+}
