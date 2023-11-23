@@ -22,20 +22,21 @@ fetch("./src/skinstyle.css")
 let newPage = () => {
   let camTextContent = localStorage.getItem("camText");
   let newHTMLDocument = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      ${styles}
-    </head>
-    <body>
-      ${camContainer.outerHTML}
-    </body>
-    </html>
-  `;
-  let newWindow = window.open(
-    "https://ismp14.github.io/OverlayCustom/src/skin.html"
-  );
-  newWindow.document.write(newHTMLDocument);
+      <!DOCTYPE html>
+      <html>
+      <head>
+        ${styles}
+      </head>
+      <body>
+        ${camContainer.outerHTML}
+      </body>
+      </html>
+    `;
+
+  let blob = new Blob([newHTMLDocument], { type: "text/html" });
+  let url = URL.createObjectURL(blob);
+
+  let newWindow = window.open(url);
 };
 
 button.addEventListener("click", newPage);
