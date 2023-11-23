@@ -30,7 +30,9 @@ let newPage = () => {
     </body>
     </html>
   `;
-  let newWindow = window.open();
+  let newWindow = window.open(
+    "https://ismp14.github.io/OverlayCustom/src/skin.html"
+  );
   newWindow.document.write(newHTMLDocument);
 };
 
