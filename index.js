@@ -8,6 +8,7 @@ let streamerNameInput = () => {
   let streamerNameValue = streamerName.value.toString();
   console.log(streamerNameValue);
   camText.textContent = streamerNameValue;
+  localStorage.setItem("camText", streamerNameValue);
 };
 
 streamerName.addEventListener("input", streamerNameInput);
@@ -19,6 +20,7 @@ fetch("./src/skinstyle.css")
   });
 
 let newPage = () => {
+  let camTextContent = localStorage.getItem("camText");
   let newHTMLDocument = `
     <!DOCTYPE html>
     <html>
