@@ -50,7 +50,7 @@ let newPage = () => {
 
   localStorage.setItem("newHTMLDocument", newHTMLDocument);
 
-  let url = new URL(HOST_URL, "./overlay/index.html");
+  let url = new URL("./overlay/index.html", HOST_URL);
   url.searchParams.set("Overlay", camTextContent);
 
   localStorage.setItem("newURL", url.toString());
