@@ -3,7 +3,7 @@ let camText = document.getElementById("cam_text");
 let button = document.getElementById("button");
 let camContainer = document.getElementById("camContainer");
 let styles;
-const HOST_URL = "https://ismp14.github.io/OverlayCustom/";
+const HOST_URL = "https://ismp14.github.io/OverlayCustom";
 
 function getURLParams() {
   const url = new URL(document.location.href.replace("#", "?"));
@@ -28,13 +28,14 @@ fetch("./src/skinstyle.css")
   });
 
 window.onload = function () {
-  if (getURLParams().textOverlay === localStorage.getItem("camText")) {
+  if (getURLParams().Overlay === localStorage.getItem("camText")) {
     document.body.innerHTML = localStorage.getItem("newHTMLDocument");
   }
 };
 
 let newPage = () => {
   let camTextContent = localStorage.getItem("camText");
+
   let newHTMLDocument = `
             <!DOCTYPE html>
             <html>
@@ -49,8 +50,8 @@ let newPage = () => {
 
   localStorage.setItem("newHTMLDocument", newHTMLDocument);
 
-  let url = new URL(HOST_URL);
-  url.searchParams.set("textOverlay", camTextContent);
+  let url = new URL("./overlay/index.html", HOST_URL);
+  url.searchParams.set("Overlay", camTextContent);
 
   localStorage.setItem("newURL", url.toString());
 
