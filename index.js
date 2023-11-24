@@ -34,7 +34,9 @@ let newPage = () => {
       `;
 
   localStorage.setItem("newHTMLDocument", newHTMLDocument);
-  let newWindow = window.open("http://127.0.0.1:5500/index.html?newPage=true");
+  let newWindow = window.open(
+    "https://ismp14.github.io/OverlayCustom/?newPage=true"
+  );
 };
 
 if (window.location.search.includes("newPage=true")) {
