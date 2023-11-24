@@ -55,6 +55,9 @@ let newPage = () => {
   localStorage.setItem("newURL", url.toString());
 
   let newWindow = window.open(url.toString());
+
+  let urlFromLocalStorage = localStorage.getItem("newURL");
+  console.log(urlFromLocalStorage);
 };
 
 button.addEventListener("click", newPage);
