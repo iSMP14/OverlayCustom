@@ -3,7 +3,7 @@ let camText = document.getElementById("cam_text");
 let button = document.getElementById("button");
 let camContainer = document.getElementById("camContainer");
 let styles;
-const HOST_URL = "https://ismp14.github.io/OverlayCustom";
+const HOST_URL = "https://ismp14.github.io/OverlayCustom/";
 
 function getURLParams() {
   const url = new URL(document.location.href.replace("#", "?"));
