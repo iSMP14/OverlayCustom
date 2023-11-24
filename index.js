@@ -35,7 +35,7 @@ let newPage = () => {
 
   localStorage.setItem("newHTMLDocument", newHTMLDocument);
   let newWindow = window.open(
-    "https://ismp14.github.io/OverlayCustom/?newPage=true"
+    "https://ismp14.github.io/OverlayCustom?newPage=true"
   );
 };
 
