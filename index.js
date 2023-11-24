@@ -22,21 +22,23 @@ fetch("./src/skinstyle.css")
 let newPage = () => {
   let camTextContent = localStorage.getItem("camText");
   let newHTMLDocument = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          ${styles}
-        </head>
-        <body>
-          ${camContainer.outerHTML}
-        </body>
-        </html>
-      `;
+          <!DOCTYPE html>
+          <html>
+          <head>
+            ${styles}
+          </head>
+          <body>
+            ${camContainer.outerHTML}
+          </body>
+          </html>
+        `;
 
   localStorage.setItem("newHTMLDocument", newHTMLDocument);
-  let newWindow = window.open(
-    "https://ismp14.github.io/OverlayCustom?newPage=true"
-  );
+
+  let url = new URL(window.location.href);
+  url.searchParams.set("newPage", "true");
+
+  let newWindow = window.open(url.toString());
 };
 
 if (window.location.search.includes("newPage=true")) {
