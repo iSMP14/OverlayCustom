@@ -28,7 +28,7 @@ fetch("./src/skinstyle.css")
   });
 
 window.onload = function () {
-  if (getURLParams().camText === localStorage.getItem("camText")) {
+  if (getURLParams().textOverlay === localStorage.getItem("camText")) {
     document.body.innerHTML = localStorage.getItem("newHTMLDocument");
   }
 };
@@ -50,7 +50,7 @@ let newPage = () => {
   localStorage.setItem("newHTMLDocument", newHTMLDocument);
 
   let url = new URL(HOST_URL);
-  url.searchParams.set("camText", camTextContent);
+  url.searchParams.set("textOverlay", camTextContent);
 
   localStorage.setItem("newURL", url.toString());
 
