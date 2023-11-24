@@ -4,6 +4,13 @@ let button = document.getElementById("button");
 let camContainer = document.getElementById("camContainer");
 let styles;
 
+function getURLParams() {
+  const url = new URL(document.location.href.replace("#", "?"));
+  const params = {};
+  url.searchParams.forEach((value, name) => (params[name] = value));
+  return params;
+}
+
 let streamerNameInput = () => {
   let streamerNameValue = streamerName.value.toString();
   console.log(streamerNameValue);
@@ -21,6 +28,7 @@ fetch("./src/skinstyle.css")
 
 let newPage = () => {
   let camTextContent = localStorage.getItem("camText");
+  let streamerName = streamerNameInput();
   let newHTMLDocument = `
           <!DOCTYPE html>
           <html>
@@ -36,13 +44,16 @@ let newPage = () => {
   localStorage.setItem("newHTMLDocument", newHTMLDocument);
 
   let url = new URL(window.location.href);
-  url.searchParams.set("newPage", "true");
+  url.searchParams.set("newPage", "streamerName");
 
   let newWindow = window.open(url.toString());
 };
 
-if (window.location.search.includes("newPage=true")) {
+if (getURLParams().newPage === "streamerName") {
   document.body.innerHTML = localStorage.getItem("newHTMLDocument");
 }
 
 button.addEventListener("click", newPage);
+
+const params = getURLParams();
+console.log(params);
