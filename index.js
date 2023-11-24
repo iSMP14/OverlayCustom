@@ -52,6 +52,8 @@ let newPage = () => {
   let url = new URL(HOST_URL);
   url.searchParams.set("textOverlay", camTextContent);
 
+  localStorage.setItem("newURL", url.toString());
+
   let newWindow = window.open(url.toString());
 };
 
