@@ -22,21 +22,23 @@ fetch("./src/skinstyle.css")
 let newPage = () => {
   let camTextContent = localStorage.getItem("camText");
   let newHTMLDocument = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        ${styles}
-      </head>
-      <body>
-        ${camContainer.outerHTML}
-      </body>
-      </html>
-    `;
+        <!DOCTYPE html>
+        <html>
+        <head>
+          ${styles}
+        </head>
+        <body>
+          ${camContainer.outerHTML}
+        </body>
+        </html>
+      `;
 
-  let blob = new Blob([newHTMLDocument], { type: "text/html" });
-  let url = URL.createObjectURL(blob);
-
-  let newWindow = window.open(url);
+  localStorage.setItem("newHTMLDocument", newHTMLDocument);
+  let newWindow = window.open("http://127.0.0.1:5500/index.html?newPage=true");
 };
+
+if (window.location.search.includes("newPage=true")) {
+  document.body.innerHTML = localStorage.getItem("newHTMLDocument");
+}
 
 button.addEventListener("click", newPage);
