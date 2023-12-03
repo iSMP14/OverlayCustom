@@ -1,5 +1,11 @@
 /* Cam desing */
 
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
 .cam_overlayContainer {
   display: flex;
   justify-content: center;
