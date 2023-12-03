@@ -73,20 +73,24 @@ class LinkGenerator extends HTMLElement {
     button.addEventListener("click", () => {
       const nameStreamerValue = nameStreamer.value.toString();
       const camTextContent = camOverlayText.value.toString();
-      const overlayStyleValue = this.shadowRoot
-        .getElementById("overlayStyle")
-        .value.toString();
 
       const url = new URL("./overlay/index.html", this.hostUrl);
       url.searchParams.set("nameStreamer", nameStreamerValue);
       url.searchParams.set("camOverlayText", camTextContent);
-      url.searchParams.set("overlayStyle", overlayStyleValue);
 
       overlayUrl.value = url.toString();
       localStorage.setItem("newURL", url.toString());
-    });
 
-    // ... (resto del código para gestionar eventos, si es necesario)
+      const camTextElement = document.querySelector("#cam_text");
+      camTextElement.textContent = camTextContent;
+
+      fetch("./src/skinstyle.css")
+        .then((response) => response.text())
+        .then((data) => {
+          const styles = `<style>${data}</style>`;
+          this.shadowRoot.appendChild(styles);
+        });
+    });
   }
 }
 
