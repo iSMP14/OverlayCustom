@@ -1,8 +1,7 @@
 let streamerName = document.getElementById("camOverlayText");
 let camText = document.getElementById("cam_text");
 let button = document.getElementById("button");
-let camContainer = document.getElementById("camContainer");
-let styles;
+let styles = "";
 const HOST_URL = "https://ismp14.github.io/OverlayCustom/";
 
 function getURLParams() {
@@ -21,7 +20,7 @@ let streamerNameInput = () => {
 
 streamerName.addEventListener("input", streamerNameInput);
 
-fetch("./src/skinstyle.css")
+fetch("https://ismp14.github.io/OverlayCustom/src/skinstyle.css") // Fetching CSS from hosted location
   .then((response) => response.text())
   .then((data) => {
     styles = `<style>${data}</style>`;
@@ -35,31 +34,15 @@ window.onload = function () {
   }
 };
 
-let newPage = () => {
+let generateURL = () => {
   let camTextContent = localStorage.getItem("camText");
-
-  let newHTMLDocument = `
-            <!DOCTYPE html>
-            <html>
-            <head>
-              ${styles}
-            </head>
-            <body>
-              ${camContainer.outerHTML}
-            </body>
-            </html>
-          `;
-
-  localStorage.setItem("newHTMLDocument", newHTMLDocument);
-
   let url = new URL("./overlay/index.html", HOST_URL);
   url.searchParams.set("Overlay", camTextContent);
 
-  localStorage.setItem("newURL", url.toString());
-
-  // Select the 'overlayUrl' element and set its 'href' property with the generated URL
   let overlayUrl = document.querySelector(".overlayUrl");
   overlayUrl.value = url.toString();
+
+  localStorage.setItem("newURL", url.toString());
 };
 
-button.addEventListener("click", newPage);
+button.addEventListener("click", generateURL);
