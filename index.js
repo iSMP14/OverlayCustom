@@ -8,13 +8,6 @@ class LinkGenerator extends HTMLElement {
     this.attachEvents();
   }
 
-  getURLParams() {
-    const url = new URL(document.location.href.replace("#", "?"));
-    const params = {};
-    url.searchParams.forEach((value, name) => (params[name] = value));
-    return params;
-  }
-
   renderStyles() {
     fetch("./src/skinstyle.css")
       .then((response) => response.text())
@@ -30,9 +23,41 @@ class LinkGenerator extends HTMLElement {
         /* Estilos para el componente */
       </style>
       <div>
-        <input id="camOverlayText" type="text">
-        <button id="button">Generar Enlace</button>
-        <input class="overlayUrl" type="text" readonly>
+        <p class="input_title">Enter the Streamer Name :</p>
+        <div class="config_1">
+          <input
+            id="nameStreamer"
+            class="nameStreamer"
+            type="text"
+            name="nameStreamer"
+            placeholder="Streamer Name" />
+        </div>
+        <p class="input_title">Enter the Cam Text :</p>
+        <div class="config_2">
+          <input
+            class="camOverlayText"
+            id="camOverlayText"
+            type="text"
+            name="camOverlayText"
+            placeholder="Cam Overlay Text" />
+        </div>
+        <p class="input_title">This is your Obs URL :</p>
+        <div class="config_3" id="overlayUrl">
+          <textarea
+            class="overlayUrl"
+            name="overlayUrl"
+            placeholder="Overlay Url"></textarea>
+        </div>
+        <p class="input_title">This is your overlay Style :</p>
+        <div class="config_4">
+          <input
+            class="overlayStyle"
+            id="overlayStyle"
+            type="text"
+            name="overlayStyle"
+            placeholder="Overlay Style" />
+        </div>
+        <button class="button" id="button">Generate</button>
       </div>
     `;
     this.shadowRoot.appendChild(template.content.cloneNode(true));
@@ -41,29 +66,27 @@ class LinkGenerator extends HTMLElement {
 
   attachEvents() {
     const button = this.shadowRoot.getElementById("button");
+    const nameStreamer = this.shadowRoot.getElementById("nameStreamer");
     const camOverlayText = this.shadowRoot.getElementById("camOverlayText");
     const overlayUrl = this.shadowRoot.querySelector(".overlayUrl");
 
     button.addEventListener("click", () => {
+      const nameStreamerValue = nameStreamer.value.toString();
       const camTextContent = camOverlayText.value.toString();
+      const overlayStyleValue = this.shadowRoot
+        .getElementById("overlayStyle")
+        .value.toString();
+
       const url = new URL("./overlay/index.html", this.hostUrl);
-      url.searchParams.set("Overlay", camTextContent);
+      url.searchParams.set("nameStreamer", nameStreamerValue);
+      url.searchParams.set("camOverlayText", camTextContent);
+      url.searchParams.set("overlayStyle", overlayStyleValue);
 
       overlayUrl.value = url.toString();
       localStorage.setItem("newURL", url.toString());
     });
 
-    window.onload = () => {
-      const params = this.getURLParams();
-      if (params["Overlay"]) {
-        camOverlayText.value = params["Overlay"];
-      }
-    };
-
-    camOverlayText.addEventListener("input", () => {
-      const streamerNameValue = camOverlayText.value.toString();
-      localStorage.setItem("camText", streamerNameValue);
-    });
+    // ... (resto del código para gestionar eventos, si es necesario)
   }
 }
 
