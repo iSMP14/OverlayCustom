@@ -3,15 +3,14 @@
 html,
 body {
   height: 100vh;
-  width: 100vw;
 }
 
 .cam_overlayContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
   width: 100%;
+  height: 100%;
 }
 
 #box {

@@ -28,8 +28,11 @@ fetch("./src/skinstyle.css")
   });
 
 window.onload = function () {
-  if (getURLParams().Overlay === localStorage.getItem("camText")) {
-    document.body.innerHTML = localStorage.getItem("newHTMLDocument");
+  let params = getURLParams();
+  if (params["Overlay"]) {
+    // Select the 'cam_test' element and set its content with the 'Overlay' parameter
+    let cam_test = document.querySelector(".cam_test");
+    cam_test.textContent = params["Overlay"];
   }
 };
 
@@ -55,7 +58,9 @@ let newPage = () => {
 
   localStorage.setItem("newURL", url.toString());
 
-  let newWindow = window.open(url.toString());
+  // Select the 'overlayUrl' element and set its 'href' property with the generated URL
+  let overlayUrl = document.querySelector(".overlayUrl");
+  overlayUrl.value = url.toString();
 };
 
 button.addEventListener("click", newPage);
