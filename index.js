@@ -30,9 +30,8 @@ fetch("./src/skinstyle.css")
 window.onload = function () {
   let params = getURLParams();
   if (params["Overlay"]) {
-    // Select the 'cam_test' element and set its content with the 'Overlay' parameter
-    let cam_test = document.querySelector(".cam_test");
-    cam_test.textContent = params["Overlay"];
+    let cam_text = document.getElementById("cam_text");
+    cam_text.textContent = params["Overlay"];
   }
 };
 
