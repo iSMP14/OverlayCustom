@@ -1,3 +1,10 @@
+window.onload = function () {
+  document.getElementById("nameStreamer").value = "";
+  document.getElementById("camOverlayText").value = "";
+  document.querySelector(".overlayUrl").value = "";
+  document.getElementById("overlayStyle").value = "";
+};
+
 class URLParamsComponent extends HTMLElement {
   constructor() {
     super();
