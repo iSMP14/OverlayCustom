@@ -9,6 +9,7 @@ body {
 .container {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: auto;
 }
 
@@ -51,7 +52,7 @@ body {
     margin-top: 0.1rem;
     color: white;
     width: 15rem;
-    height: 2rem;
+    height: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,6 +74,8 @@ body {
   .camOverlayText,
   .overlayUrl,
   .overlayStyle {
+    height: 2rem;
+    width: 15rem;
     font-size: large;
     font-family: var(--ubuntu-font);
     background-color: silver;
@@ -82,5 +85,13 @@ body {
     margin: auto;
     color: black;
     text-align: center;
+    resize: none;
   }
+}
+
+cam_overlayContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
