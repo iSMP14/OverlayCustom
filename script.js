@@ -12,8 +12,6 @@ class URLParamsComponent extends HTMLElement {
     // Crear elementos en el shadow DOM
     const style = document.createElement("style");
     style.textContent = `
-
-
         html,
         body {
         height: 100vh;
@@ -138,9 +136,12 @@ customElements.define("url-params-component", URLParamsComponent);
 
 // Resto de tu código JavaScript
 
+let streamerName = document.getElementById("camOverlayText");
+let camText = document.getElementById("cam_text");
 let button = document.getElementById("button");
 let camContainer = document.getElementById("camContainer");
 let styles;
+const HOST_URL = "https://ismp14.github.io/OverlayCustom/";
 
 function getURLParams() {
   const url = new URL(document.location.href.replace("#", "?"));
@@ -148,6 +149,15 @@ function getURLParams() {
   url.searchParams.forEach((value, name) => (params[name] = value));
   return params;
 }
+
+let streamerNameInput = () => {
+  let streamerNameValue = streamerName.value.toString();
+  console.log(streamerNameValue);
+  camText.textContent = streamerNameValue;
+  localStorage.setItem("camText", streamerNameValue);
+};
+
+streamerName.addEventListener("input", streamerNameInput);
 
 fetch("./src/skinstyle.css")
   .then((response) => response.text())
@@ -158,30 +168,25 @@ fetch("./src/skinstyle.css")
 window.onload = function () {
   let params = getURLParams();
   if (params["Overlay"]) {
-    let camTextComponent = document.querySelector("url-params-component");
-    if (camTextComponent) {
-      camTextComponent.shadowRoot.getElementById("cam_text").textContent =
-        params["Overlay"];
-    }
+    let cam_text = document.getElementById("cam_text");
+    cam_text.textContent = params["Overlay"];
   }
 };
 
 let newPage = () => {
-  let camTextContent = document
-    .querySelector("url-params-component")
-    .shadowRoot.getElementById("cam_text").textContent;
+  let camTextContent = localStorage.getItem("camText");
 
   let newHTMLDocument = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        ${styles}
-      </head>
-      <body>
-        ${camContainer.outerHTML}
-      </body>
-      </html>
-    `;
+            <!DOCTYPE html>
+            <html>
+            <head>
+              ${styles}
+            </head>
+            <body>
+              ${camContainer.outerHTML}
+            </body>
+            </html>
+          `;
 
   localStorage.setItem("newHTMLDocument", newHTMLDocument);
 
